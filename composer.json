@@ -1,0 +1,12 @@
+{
+  "name": "ale10257/number-systems",
+  "description": "Number-systems in the language php",
+  "autoload": {
+    "psr-4": {
+      "ale10257\\NumberSystems\\": "src"
+    }
+  },
+  "require": {
+    "php": "~8.0"
+  }
+}
