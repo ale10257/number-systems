@@ -7,8 +7,8 @@ use ale10257\NumberSystems\CheckData;
 
 $checkData = new CheckData();
 
-$from = readline("Из какой системы будет переводить (от 2 до 10): ");
-$to = readline("В какую систему будет переводить (от 2 до 10): ");
+$from = readline("Из какой системы будет переводить (от 2 до 16): ");
+$to = readline("В какую систему будет переводить (от 2 до 16): ");
 $num = readline("Введите исходное число: ");
 
 $aggregator = new Aggregator();

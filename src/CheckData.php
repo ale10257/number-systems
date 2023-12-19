@@ -9,7 +9,9 @@ class CheckData
      */
     public function check($num): void
     {
-        $this->rangeCheck((int)$num);
+        if ($num < 2 || $num > 16) {
+            throw new \Exception('Основание системы счисления должно быть числом в диапазоне от 2 до 16!');
+        }
     }
 
     /**
@@ -27,22 +29,12 @@ class CheckData
      */
     public function checkNum($num, $numberSystem): void
     {
-        $digits = str_split($num);
+        $getSymbols = new GetSymbol();
+        $digits = $getSymbols->getDataAsNumber($num);
         foreach ($digits as $digit) {
-            $digit = (int)$digit;
             if (!($digit < $numberSystem)) {
                 throw new \Exception('Данное число неверно для исходной систем счисления');
             }
-        }
-    }
-
-    /**
-     * @throws \Exception
-     */
-    private function rangeCheck($num): void
-    {
-        if ($num < 2 || $num > 10) {
-            throw new \Exception('Значение должно быть числом в диапазоне от 2 до 10!');
         }
     }
 }

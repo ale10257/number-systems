@@ -6,7 +6,7 @@ class Aggregator
 {
     public int $from;
     public int $to;
-    public int $num;
+    public string|int $num;
 
     private CheckData $checkData;
     private To10Number $to10Number;
@@ -21,24 +21,11 @@ class Aggregator
 
     public function check(): void
     {
-        try {
-            $this->checkData->check($this->from);
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-            return;
-        }
-        try {
-            $this->checkData->check($this->to);
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-            return;
-        }
-        try {
-            $this->checkData->equalityTest($this->from, $this->to);
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-            return;
-        }
+        $this->checkData->check($this->from);
+        $this->checkData->check($this->to);
+        $this->checkData->equalityTest($this->from, $this->to);
+
+
     }
 
     public function getResult(): void
