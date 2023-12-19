@@ -1,10 +1,9 @@
-/vendor/
+vendor/
 
-/.idea/
+.idea/
 
 .env
 
 .vscode
 
-/.phpunit.cache/
-/vendor/composer/
+.phpunit.cache/
