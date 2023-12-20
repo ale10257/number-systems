@@ -19,26 +19,26 @@ class Aggregator
         $this->from10Number = new From10Number();
     }
 
+    /**
+     * @throws \Exception
+     */
     public function check(): void
     {
         $this->checkData->check($this->from);
         $this->checkData->check($this->to);
         $this->checkData->equalityTest($this->from, $this->to);
-
-
+        $this->checkData->checkNum($this->num, $this->from);
     }
 
-    public function getResult(): void
+    public function getResult(): int|string
     {
         if ($this->to == 10) {
-            echo 'Результат: ' . $this->to10Number->convert($this->num, $this->from) . PHP_EOL;
-            return;
+            return $this->to10Number->convert($this->num, $this->from);
         }
         if ($this->from == 10) {
-            echo 'Результат: ' .  $this->from10Number->convert($this->num, $this->to) . PHP_EOL;
-            return;
+            return $this->from10Number->convert($this->num, $this->to);
         }
         $num = $this->to10Number->convert($this->num, $this->from);
-        echo 'Результат: ' .  $this->from10Number->convert($num, $this->to) . PHP_EOL;
+        return $this->from10Number->convert($num, $this->to);
     }
 }

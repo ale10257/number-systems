@@ -6,6 +6,8 @@ class From10Number
 {
     public function convert(int|string $num, int $radixTo): int|string
     {
+        $checkMinus = new CheckMinus();
+        $num = $checkMinus->check($num);
         $getSymbol = new GetSymbol();
         $result = [];
         while (true) {
@@ -18,6 +20,7 @@ class From10Number
             }
             $result[] = $getSymbol->getValue($numOld - ($num * $radixTo));
         }
-        return implode('', array_reverse($result));
+        $num = implode('', array_reverse($result));
+        return $checkMinus->getNum($num);
     }
 }

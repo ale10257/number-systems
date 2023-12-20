@@ -7,11 +7,15 @@ class CheckData
     /**
      * @throws \Exception
      */
-    public function check($num): void
+    public function check($num): bool
     {
+        if (!is_int($num)) {
+            throw new \Exception('Основания систем счисления должны быть числом!');
+        }
         if ($num < 2 || $num > 16) {
             throw new \Exception('Основание системы счисления должно быть числом в диапазоне от 2 до 16!');
         }
+        return true;
     }
 
     /**
@@ -27,8 +31,10 @@ class CheckData
     /**
      * @throws \Exception
      */
-    public function checkNum($num, $numberSystem): void
+    public function checkNum($num, $numberSystem): bool
     {
+        $checkMinus = new CheckMinus();
+        $num = $checkMinus->check($num);
         $getSymbols = new GetSymbol();
         $digits = $getSymbols->getDataAsNumber($num);
         foreach ($digits as $digit) {
@@ -36,5 +42,6 @@ class CheckData
                 throw new \Exception('Данное число неверно для исходной систем счисления');
             }
         }
+        return true;
     }
 }

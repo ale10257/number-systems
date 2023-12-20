@@ -24,4 +24,4 @@ try {
     return;
 }
 
-$aggregator->getResult();
+echo 'Результат: ' . $aggregator->getResult() . PHP_EOL;

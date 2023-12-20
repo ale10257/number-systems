@@ -41,7 +41,7 @@ class GetSymbol
             if (is_numeric($digit)) {
                 $result[] = $digit;
             } else {
-                if (!in_array(strtolower($digit), $this->letters)) {
+                if (!in_array(strtolower($digit), array_keys($this->letters))) {
                     throw new \Exception('Неизвестный символ ' . $digit);
                 }
                 $result[] = $this->letters[strtolower($digit)];
