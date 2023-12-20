@@ -10,8 +10,9 @@ class CheckMinus
     {
         if (str_starts_with($num, '-')) {
             $this->minus = '-';
+            return str_replace('-', '', $num);
         }
-        return str_replace('-', '', $num);
+        return $num;
     }
 
     public function getNum(int|string $num): string
