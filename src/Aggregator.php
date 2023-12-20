@@ -32,12 +32,6 @@ class Aggregator
 
     public function getResult(): int|string
     {
-        if ($this->to == 10) {
-            return $this->to10Number->convert($this->num, $this->from);
-        }
-        if ($this->from == 10) {
-            return $this->from10Number->convert($this->num, $this->to);
-        }
         $num = $this->to10Number->convert($this->num, $this->from);
         return $this->from10Number->convert($num, $this->to);
     }
